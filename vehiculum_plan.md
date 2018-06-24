@@ -5,7 +5,7 @@
 restore it, paths getting too big in terminal for my little resolution
 
 - Setup basic working Thor console: **15 minutes**
-^10 mintes -> Still need to see how arguments and optiona arguments are handled
+^10 minutes -> Still need to see how arguments and optiona arguments are handled: had to go out for lunch at this point, unexpected interruption
 
 - Setup of barebones proposed objects and their requires (have everything checked to be loading correctly in console): **15 minutes**
 	- **Page**
