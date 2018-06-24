@@ -1,7 +1,14 @@
 #!/usr/bin/env ruby
 
+# Runs our .gemspec, among others, allowing 'lib' to be appended onto $LOAD_PATH
 require "bundler/setup"
-require "status"
+
+require "thor"
+require "awesome_print"
 
 require "pry"
+require "pry-byebug"
+
+require "status"
+
 Pry.start
