@@ -1,5 +1,8 @@
-# require "status/version"
-# binding.pry
+require "status/version"
+require "status/page"
+require "status/pages"
+require "status/history"
+require "status/data_store"
 
 module Status
 end
