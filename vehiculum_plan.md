@@ -5,7 +5,7 @@
 restore it, paths getting too big in terminal for my little resolution
 
 - Setup basic working Thor console: **15 minutes**
-^10 minutes -> Still need to see how arguments and optiona arguments are handled: had to go out for lunch at this point, unexpected interruption
+^10 minutes -> Still need to see how arguments and optional arguments are handled: had to go out for lunch at this point, unexpected interruption
 
 - Setup of barebones proposed objects and their requires (have everything checked to be loading correctly in console): **15 minutes**
 	- **Page**
@@ -22,7 +22,7 @@ restore it, paths getting too big in terminal for my little resolution
 	- working **pull** through CLI: **10 minutes**
 	- working **live** through CLI: **20 minutes** (uses pull)
 	- tests: use **vcr** gem with casette for mock requests: **20 minutes**
-- fll in other **Page::Webpage** objects, get the respective tests and check if all is working: **30 minutes**
+- fill in other **Page::Webpage** objects, get the respective tests and check if all is working: **30 minutes**
 
 - working **history**, through CLI, with **terminal-table** gem: **20 minutes**
 - tests: **10 minutes**
