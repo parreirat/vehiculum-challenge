@@ -12,13 +12,14 @@ $LOAD_PATH, therefore we'd have to do some sleazy requires. Figured out I forgot
 properly.
 
 - Setup of barebones proposed objects and their requires (have everything checked to be loading correctly in console): **15 minutes**
-	- **Page**
+	- **Pages**
 		-- **Page::Bitbucket**
 		-- **Page::CloudFlare**
 		-- **Page::Rubygems**
 		-- **Page::Github**
 	- **History**
 	- **DataStore**
+^15 minutes -> Also configured bin/console here.
 
 - starting for a **Page::Bitbucket**:
 	- working **pull**, querying URL and outputting status: **20 minutes**
