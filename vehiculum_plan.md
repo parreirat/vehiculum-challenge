@@ -6,6 +6,10 @@ restore it, paths getting too big in terminal for my little resolution
 
 - Setup basic working Thor console: **15 minutes**
 ^10 minutes -> Still need to see how arguments and optional arguments are handled: had to go out for lunch at this point, unexpected interruption
+^20 minutes -> Changing namespaces, modules and everything else took some work.
+Initial problem was that our bin/status wasn't appending '/lib' onto the
+$LOAD_PATH, therefore we'd have to do some sleazy requires. Figured out I forgot the 'bundler_setup' require in order to have .gemspec execute and append it
+properly.
 
 - Setup of barebones proposed objects and their requires (have everything checked to be loading correctly in console): **15 minutes**
 	- **Page**
