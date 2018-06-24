@@ -18,7 +18,13 @@ class StatusCLI < Thor
 	# @parreirat TODO - Before I forget: Use Threads to pool all services
   desc "pull output=false webpages=all", "queries services once and saves into store"
   def pull(output = true, webpages = :all)
-  	puts "I werk!!".green
+  	Thread.new {
+  		if Status::Pages::Bitbucket.new.is_up?
+	  		puts "Bitbucket is up!"
+	  	else
+	  		puts "Bitbucket is down!"
+	  	end
+	  }.join
   end
 
 	# Optional param webpages: all, subset (default: all)
