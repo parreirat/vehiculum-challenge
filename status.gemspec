@@ -34,6 +34,9 @@ Gem::Specification.new do |spec|
   # Thor for helping us build a simple CLI Tool.
   spec.add_dependency 'thor'
 
+  # For pasing HTML and checking if webpages are up or other conditions.
+  spec.add_dependency 'oga'
+
   # Bundler, what else?
   spec.add_development_dependency "bundler"
 
@@ -52,5 +55,8 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency "rspec"
   spec.add_development_dependency "guard"
   spec.add_development_dependency "guard-rspec"
+  # Use VCR for HTTP mock requests, and Webmock to be used alongside.
+  spec.add_development_dependency "vcr"
+  spec.add_development_dependency "webmock"
 
 end

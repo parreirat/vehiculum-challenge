@@ -1,5 +1,10 @@
 require "bundler/setup"
+
 require "status"
+require "awesome_print"
+require "pry"
+require "pry-byebug"
+require "vcr"
 
 RSpec.configure do |config|
   # Enable flags like --only-failures and --next-failure
@@ -11,4 +16,14 @@ RSpec.configure do |config|
   config.expect_with :rspec do |c|
     c.syntax = :expect
   end
+
 end
+
+VCR.configure do |config|
+  config.cassette_library_dir = "spec/fixtures/vcr_cassettes"
+  config.hook_into :webmock
+  # config.configure_rspec_metadata!
+end
+
+# @parreirat NOTE - Our custom configurations.
+RSpec::Expectations.configuration.on_potential_false_positives = :nothing
