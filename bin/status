@@ -1,0 +1,36 @@
+require "thor"
+
+class Status < Thor
+
+  # Optional param output: false, true (default: true)
+  # Optional param webpages: all, subset (default: all)
+  desc "pull OUTPUT WEBPAGES", "queries services once and saves into store"
+  def pull(output = true, webpages: :all)
+  end
+
+  # Optional param webpages: all, subset (default: all)
+  desc "live POOL_INTERVAL WEBPAGES", "queries services continusly with pool_interval seconds interval and saves into store"
+	def live(webpages: :all)
+	end
+
+  desc "prints all the data currently saved in a table fashion"
+	def history
+	end
+
+	# Mandatory param, backup file path. (default: Dir.pwd/status_log.csv)
+  desc "saves current status data to a file"
+	def backup()
+	end
+
+	# Mandatory param, backup file path. (default: Dir.pwd/status_log.csv)
+  desc "adds data from a file into current status data"
+	def restore()
+	end
+
+  desc "summarizes the current data and displays it in a table fashion"
+	def stats()
+	end
+
+end
+
+Status.start(ARGV)

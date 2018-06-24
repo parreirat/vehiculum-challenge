@@ -2,6 +2,7 @@ PATH
   remote: .
   specs:
     vehiculum-challenge (0.1.0)
+      thor
 
 GEM
   remote: https://rubygems.org/

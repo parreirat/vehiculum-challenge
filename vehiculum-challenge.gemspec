@@ -32,6 +32,10 @@ Gem::Specification.new do |spec|
   spec.executables   = spec.files.grep(%r{^exe/}) { |f| File.basename(f) }
   spec.require_paths = ["lib"]
 
+  # Thor for helping us build a simple CLI Tool.
+  spec.add_dependency 'thor'
+
+  # Bundler, what else?
   spec.add_development_dependency "bundler"
 
   # In case we need any rake tasks.

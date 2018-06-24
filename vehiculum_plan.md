@@ -1,10 +1,11 @@
 ###Breakdown of tasks:
 
 - Initial bundle gem setup, development gems and tweaks, github repo: **15 minutes**
-
-^5 minutes
+^20 minutes -> wasted time trying to hide bash prompt and making method to
+restore it, paths getting too big in terminal for my little resolution
 
 - Setup basic working Thor console: **15 minutes**
+^10 mintes -> Still need to see how arguments and optiona arguments are handled
 
 - Setup of barebones proposed objects and their requires (have everything checked to be loading correctly in console): **15 minutes**
 	- **Page**
