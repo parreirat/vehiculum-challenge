@@ -1,12 +1,18 @@
 #!/usr/bin/env ruby
 
+# Runs our .gemspec, among others, allowing 'lib' to be appended onto $LOAD_PATH
+require "bundler/setup"
+
 require "thor"
 require "awesome_print"
+
 require "pry"
 require "pry-byebug"
-require "challenge"
+Pry.start
 
-class Status < Thor
+require "status"
+
+class StatusCLI < Thor
 
 	# simultaneously
   # Optional param output: false, true (default: true)
@@ -42,4 +48,4 @@ class Status < Thor
 
 end
 
-Status.start(ARGV)
+StatusCLI.start(ARGV)

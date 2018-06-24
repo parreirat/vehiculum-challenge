@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    vehiculum-challenge (0.1.0)
+    status (0.1.0)
       thor
 
 GEM
@@ -94,7 +94,7 @@ DEPENDENCIES
   rake
   rspec
   rubocop
-  vehiculum-challenge!
+  status!
 
 BUNDLED WITH
    1.16.2
