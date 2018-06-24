@@ -1,3 +1,7 @@
+###Additional sparks while doing actual coding:
+
+- Be able to scout several of the services within each web page, not only if the main service is operational.
+
 ###Breakdown of tasks:
 
 - Initial bundle gem setup, development gems and tweaks, github repo: **15 minutes**
@@ -28,6 +32,8 @@ properly.
 	- working **live** through CLI: **20 minutes** (uses pull)
 	- tests: use **vcr** gem with casette for mock requests: **20 minutes**
 - fill in other **Page::Webpage** objects, get the respective tests and check if all is working: **30 minutes**
+
+^-> Done basic pull with output through CLI, with tests for VCR but no datastore in ~1h10. A few distractions but generally just a lot of tweaking and moving around of methods and figuring how to do things better. Taking a break.
 
 - working **history**, through CLI, with **terminal-table** gem: **20 minutes**
 - tests: **10 minutes**
