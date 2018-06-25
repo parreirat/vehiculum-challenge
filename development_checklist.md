@@ -1,18 +1,26 @@
-Current priority: 2
+Current priority: 3
 
 ####Priorities:
 ~~1 - Implement all the Status::Page classes.~~ **** 15 minutes
-2 - Implement tests for all the Status::Page classes.
+
+~~2 - Implement tests for all the Status::Page classes.~~ 5 minutes
+  - Simply copy/pasting tests around: can be generalized into a
+    meta-programming test class (like a lot of the code we'll have in this
+    task) that will do everything by itself, but I've grown somewhat weary of
+    doing too much meta-programming magic as time goes on because suddenly
+    things might start specializing and then... a lot of unnecessary work.
+
 3 - Implement tests for Status::DataStore.
+
 4 - Implement tests for Status::History.
 
 ####Checklist:
 [ ] - Tests
-  [ ] - Status::Page
+  [x] - Status::Page
     [x] - Status::Page::Bitbucket
-    [ ] - Status::Page::Cloudflare
-    [ ] - Status::Page::Github
-    [ ] - Status::Page::Rubygems
+    [x] - Status::Page::Cloudflare
+    [x] - Status::Page::Github
+    [x] - Status::Page::Rubygems
   [ ] - Status::DataStore
   [ ] - Status::History
 
