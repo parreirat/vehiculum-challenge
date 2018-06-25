@@ -48,7 +48,6 @@ $LOAD_PATH, therefore we'd have to do some sleazy requires. Figured out I forgot
 
 - refactor, finishing touches: **30 minutes**
 
-
 Over the course of about 2ish hours, possibly 2h30 implemented DataStore,
 History, CLI commands for pull/live/history, but not backup/restore (trivial).
 Took this long due to a lot of time just playing around with implementations
@@ -66,3 +65,5 @@ Should have done a proper checklist of the tasks, and crossed them out in the
 Found it hard to just follow the tasks sequentially because I was having fun
 and forgot to follow the order of tasks and write down the times, as well as
 doing the small commits.
+
+Will elaborate a checklist.md instead.
