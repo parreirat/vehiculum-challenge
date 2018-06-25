@@ -35,6 +35,7 @@ module Status
 
     def wipe_data_store(file = default_file)
       File.delete(file) if File.exists?(file)
+      initialize_data_store
     end
 
     def initialize(load_default_file = true)
