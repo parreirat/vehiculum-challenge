@@ -28,6 +28,7 @@ Current priority: 3
     eliminate lesser-than-second fractions.
   - Now big comparisons are still failing comparisons in very very rare cases,
     and no miliseconds are involved now. Taking a break.
+  - Fixed in 5 minutes: sorting by all the tuples makes the sorting as expected.
 
 
 4 - Implement tests for Status::History.
