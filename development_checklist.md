@@ -13,8 +13,15 @@ Current priority: 3
 3 - Implement tests for Status::DataStore.
   - Wasting way too much time on "what's the best standards of test making I can
     have?", for example on focusing on not having more than one expectation per
-    example. Also struggled with how to test for file input/output, have never
-    dealt with it. Struggled with stubbing the files for this and cleaning them.
+    example.
+    Also struggled with how to test for file input/output, have never
+    dealt with it.
+    Struggled with stubbing the files for this and cleaning them.
+    Stuck for last 30 minutes figuring out why the time stamps on my backed
+    up/loaded data always changes by fractions of a second.
+    expected: {...[{..., :time=>2018-06-25 17:57:29.000000000 +0100}]...}
+         got: {...[{..., :time=>2018-06-25 17:57:29.438726313 +0100}]...}
+
 
 4 - Implement tests for Status::History.
 
