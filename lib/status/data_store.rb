@@ -111,7 +111,7 @@ module Status
           end
         end
         # Sort data by most recent on top, facilitates human readability.
-        row_data.sort_by!{ |provider, status, time| time }.reverse
+        row_data.sort_by{ |provider, status, time| [time, provider, status] }.reverse
       end
 
       # Returns hash of all providers with empty arrays as values:

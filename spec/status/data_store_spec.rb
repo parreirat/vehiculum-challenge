@@ -121,7 +121,7 @@ RSpec.describe Status::DataStore do
 
     # This should guarantee that the data being written to .csv is correct.
     it "data stays the same when backed up and loaded using default files" do
-      repetitions = Random.rand(1..10)
+      repetitions = Random.rand(0..50)
       repetitions.times { add_random_data_point(data_store, provider) }
       old_data = data_store.data
       data_store.save_data_store
@@ -129,21 +129,13 @@ RSpec.describe Status::DataStore do
       new_data_store.load_data_store(data_store.default_file)
       new_data = new_data_store.data
       # Convert them to .csv-style arrays for easier comparison, which are
-      # sorted by time.
+      # sorted by, therefore properly comparable.
       old_data = Status::DataStore.send(:data_to_rows, old_data)
       new_data = Status::DataStore.send(:data_to_rows, new_data)
       expect(old_data).to eq(new_data)
     end
 
-    # # This should guarantee that the data being written to .csv is correct.
     # it "data stays the same when backed up and loaded with custom files" do
-    #   repetitions = Random.rand(1..100)
-    #   repetitions.times { add_random_data_point(data_store, provider) }
-    #   old_data = data_store.data
-    #   data_store.save_data_store
-    #   new_data_store = klass.new(false)
-    #   new_data_store.load_data_store(data_store.default_file)
-    #   expect(old_data).to eq(new_data_store.data)
     # end
 
   end
