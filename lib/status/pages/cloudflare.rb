@@ -10,8 +10,12 @@ module Status
         PAGE_URL
       end
 
-      def provider
+      def self.provider
         PROVIDER
+      end
+
+      def provider
+        self.class.provider
       end
 
       # Checks our webpage's HTML through some selectors using the goa gem.

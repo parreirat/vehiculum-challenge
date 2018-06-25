@@ -45,8 +45,12 @@
 ~~7 - Fix duplicates on 'restore' command merge.~~ **5 minutes**
   - Just squash duplicates with uniq after each restore.
 
-8 - Implement webpages argument into pull/live
-9 - Implement CLI command stats
+~~8 - Implement webpages argument into pull~~ **20 minutes**
+  - Starting refactoring and aborting... then deciding to refactor again... and
+    aborting again. Not very pretty code on pull and futurely live.
+
+9 - Implement webpages argument into live
+10 - Implement CLI command stats
 
 ####Checklist:
 
@@ -70,8 +74,8 @@
   [x] - with output argument
   [x] - with data storage saving
   [ ] - IMPROVEMENTS
-    [ ] - with webpages argument
-    [ ] - with thread usage
+    [x] - with webpages argument **20 minutes** (starting refactoring and aborting...)
+    [x] - with thread usage
     [ ] - with error handling
     [ ] - with internals hidden away
     [ ] - prettify/uniformize description/argument usage
@@ -118,6 +122,7 @@
 
 [ ] - sparks
   [ ] - yields for formatting .csv data outputs
+  [ ] - yields for formatting history table outputs
   [ ] - rake task for basic implementation of new Status::Page
   [ ] - rake tasks/config file for new pages to be implemented
   [ ] - release actual gem

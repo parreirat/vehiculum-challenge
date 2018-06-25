@@ -14,31 +14,38 @@ require "status"
 
 class StatusCLI < Thor
 
-  desc "pull [--no-output]", "queries services once and saves into data store"
-  method_option :webpages, type: :array, default: Status::Page.implemented_pages
+  desc "pull [--no-output] [webpages=bitbucket cloudflare github rubygems]",
+       "queries services once and saves into data store"
+  method_option :webpages, type: :array, default: Status::Page.implemented_pages.collect(&:provider)
   method_option :output  , type: :boolean, default: true
   def pull
-    # @parreirat NOTE - Need top-level orchestrator class... not calling
-    #   these internals directly!
-  	Thread.new {
-      page = Status::Pages::Bitbucket.new
-      puts "Pooling #{page.provider}...".yellow if options[:output]
-      is_up = page.is_up?(true)
-      if options[:output]
-      status = ""
-        if is_up
-          status = "Up!".to_s.green
-        else
-          status = "Down!".to_s.red
+    threads = []
+    options[:webpages].each do |provider|
+      # It hurts to do this, no rails String#constantize.
+      klass = Kernel.const_get("Status::Pages::#{provider.to_s.capitalize}")
+    	threads << Thread.new {
+        page = klass.new
+        puts "Pooling #{provider}...".yellow if options[:output]
+        is_up = page.is_up?(true)
+        if options[:output]
+        status = ""
+          if is_up
+            status = "Up!".to_s.green
+          else
+            status = "Down!".to_s.red
+          end
+        puts "Pooling #{provider} complete: #{status}".yellow
         end
-      puts "Pooling #{page.provider} complete: #{status}".yellow
+  	  }
       end
-	  }.join
+    # Wait for all of our threads.
+    threads.each(&:join)
   end
 
   # @parreirat NOTE - Some yield magic somewhere around here?
 	# Optional param webpages: all, subset (default: all)
 	desc "live [--pool_interval=5] [--no-output] ", "queries services continuously with pool_interval seconds interval and saves into store"
+  method_option :webpages, type: :array, default: Status::Page.implemented_pages.collect(&:provider)
   method_option :pool_interval, type: :numeric, default: 1
   method_option :output, type: :boolean, default: true
 	def live
