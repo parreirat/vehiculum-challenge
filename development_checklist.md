@@ -1,7 +1,7 @@
-Current priority: 1
+Current priority: 2
 
 ####Priorities:
-1 - Implement all the Status::Page classes.
+~~1 - Implement all the Status::Page classes.~~ **** 15 minutes
 2 - Implement tests for all the Status::Page classes.
 3 - Implement tests for Status::DataStore.
 4 - Implement tests for Status::History.
@@ -17,9 +17,9 @@ Current priority: 1
   [ ] - Status::History
 
 [x] - Implement Status::Page::Bitbucket
-[ ] - Implement Status::Page::Cloudflare
-[ ] - Implement Status::Page::Github
-[ ] - Implement Status::Page::Rubygems
+[x] - Implement Status::Page::Cloudflare
+[x] - Implement Status::Page::Github
+[x] - Implement Status::Page::Rubygems
 
 [x] - pull
   [x] - with output argument
