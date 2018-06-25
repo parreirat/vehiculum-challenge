@@ -1,9 +1,9 @@
 Current priority: 3
 
 ####Priorities:
-~~1 - Implement all the Status::Page classes.~~ **** 15 minutes
+~~1 - Implement all the Status::Page classes.~~ **15 minutes**
 
-~~2 - Implement tests for all the Status::Page classes.~~ 5 minutes
+~~2 - Implement tests for all the Status::Page classes.~~ **5 minutes**
   - Simply copy/pasting tests around: can be generalized into a
     meta-programming test class (like a lot of the code we'll have in this
     task) that will do everything by itself, but I've grown somewhat weary of
@@ -14,13 +14,20 @@ Current priority: 3
   - Wasting way too much time on "what's the best standards of test making I can
     have?", for example on focusing on not having more than one expectation per
     example.
-    Also struggled with how to test for file input/output, have never
+  - Also struggled with how to test for file input/output, have never
     dealt with it.
-    Struggled with stubbing the files for this and cleaning them.
-    Stuck for last 30 minutes figuring out why the time stamps on my backed
+  - Struggled with stubbing the files for this and cleaning them.
+  - Stuck for last 30 minutes figuring out why the time stamps on my backed
     up/loaded data always changes by fractions of a second.
     expected: {...[{..., :time=>2018-06-25 17:57:29.000000000 +0100}]...}
          got: {...[{..., :time=>2018-06-25 17:57:29.438726313 +0100}]...}
+  - Solved after about 1 hour: the first thing I looked and kept looking at
+    all the time, our 'Time.now' for introducing random data points, was
+    introducing the lesser-than-second units which were not visible in Time
+    object without accessing it directly into comparison. Use Time#round to
+    eliminate lesser-than-second fractions.
+  - Now big comparisons are still failing comparisons in very very rare cases,
+    and no miliseconds are involved now. Taking a break.
 
 
 4 - Implement tests for Status::History.
@@ -77,6 +84,7 @@ Current priority: 3
 [ ] - restore
   [ ] - with MERGE instead of replace
   [ ] - IMPROVEMENTS
+    [ ] - with reset/smash/wipe argument
     [ ] - with error handling
     [ ] - with internals hidden away
     [ ] - prettify/uniformize description/argument usage
@@ -90,10 +98,12 @@ Current priority: 3
 [ ] - sparks
   [ ] - yields for formatting .csv data outputs
   [ ] - rake tasks/config file for new pages to be implemented
+  [ ] - release actual gem
 
 [ ] - General refactor
   [ ] - Rubocop linting
   [ ] - Comment cleanup/uniformization
+  [ ] - Use optimist gem versions or lock them
 
 ####Notes
 Not sure what this refers to exactly, in the task PDF:
