@@ -8,7 +8,7 @@ module Status
     # @parreirat NOTE - Could branch this off into subclasses responsible
     #   for implementing different types of save/load schemes, ex.: JSON,
     #   serialization into binary or YAML...
-    #
+
     # @parreirat NOTE - Might not be the smartest things having separate
     #   formats for :data and the data we export into CSV, unnecessary
     #   processing... tradeoff of being easier to manipulate at run time and
@@ -32,24 +32,14 @@ module Status
     #   ]
     # }
     attr_accessor :data
-    # attr_accessor :file_handle
 
-    # @parreirat NOTE - Debugging
-    def random
-      add_data_point(
-        [:github, :bitbucket, :cloudflare, :rubygems].sample,
-        [:up, :down].sample,
-        Time.now - Random.rand(100)
-      )
-    end
     def wipe_data_store(file = default_file)
       File.delete(file) if File.exists?(file)
     end
-    # /@parreirat NOTE - Debugging
 
-    def initialize
+    def initialize(load_default_file = true)
       initialize_data_store
-      merge_data_store(default_file)
+      merge_data_store(default_file) if load_default_file
     end
 
     def add_data_point(provider, status, time)

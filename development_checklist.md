@@ -11,6 +11,10 @@ Current priority: 3
     things might start specializing and then... a lot of unnecessary work.
 
 3 - Implement tests for Status::DataStore.
+  - Wasting way too much time on "what's the best standards of test making I can
+    have?", for example on focusing on not having more than one expectation per
+    example. Also struggled with how to test for file input/output, have never
+    dealt with it. Struggled with stubbing the files for this and cleaning them.
 
 4 - Implement tests for Status::History.
 
@@ -77,11 +81,12 @@ Current priority: 3
     [ ] - prettify/uniformize description/argument usage
 
 [ ] - sparks
-  - TODO
-
-[ ] - Comment cleanup
+  [ ] - yields for formatting .csv data outputs
+  [ ] - rake tasks/config file for new pages to be implemented
 
 [ ] - General refactor
+  [ ] - Rubocop linting
+  [ ] - Comment cleanup/uniformization
 
 ####Notes
 Not sure what this refers to exactly, in the task PDF:
