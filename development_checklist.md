@@ -42,7 +42,9 @@
 ~~6 - Implement CLI command restore~~ **5 minutes**
   - Just needed to call implemented methods on both, done in 10 minutes.
 
-7 - Implement CLI command stats
+7 - Fix duplicates on 'restore' command merge.
+
+8 - Implement CLI command stats
 
 ####Checklist:
 
