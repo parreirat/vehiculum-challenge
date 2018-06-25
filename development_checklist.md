@@ -30,16 +30,17 @@
   - 2 more minutes to add one final tests for Status::DataStore. (tests in
     need of refactoring, too much repetition throughout this one)
 
-~~4 - Implement tests for Status::History.~~
+~~4 - Implement tests for Status::History.~~ **15 minutes**
   - Not much to do here: could create a fixture table generated from a fixed set
     of seeds. Would create an identical data store, create the same data points,
     and expect the print to be exactly the same as that of the fixture table
-    output.
+    output. Drifted a bit thinking about doing actual output testing and gave
+    up.
   - Stopping for now.
 
-5 - Implement CLI command backup
-
-6 - Implement CLI command restore
+~~5 - Implement CLI command backup~~ **5 minutes**
+~~6 - Implement CLI command restore~~ **5 minutes**
+  - Just needed to call implemented methods on both, done in 10 minutes.
 
 7 - Implement CLI command stats
 
@@ -82,7 +83,7 @@
     [ ] - with internals hidden away
     [ ] - prettify/uniformize description/argument usage
 
-[x] - history
+[x] - history **5 minutes**
   [ ] - IMPROVEMENTS
     [x] - with format argument **2 minutes**
     [ ] - with max_entries argument
@@ -90,15 +91,16 @@
     [ ] - with internals hidden away
     [ ] - prettify/uniformize description/argument usage
 
-[ ] - backup
+[x] - backup **5 minutes**
   [ ] - IMPROVEMENTS
     [ ] - with error handling
     [ ] - with internals hidden away
     [ ] - prettify/uniformize description/argument usage
 
-[ ] - restore
+[x] - restore **5 minutes**
   [ ] - IMPROVEMENTS
-    [ ] - with MERGE instead of replace
+    [x] - with MERGE instead of replace **2 minutes** (just add option)
+      [ ] - do not add duplicates on merge
     [ ] - with reset/smash/wipe argument
     [ ] - with error handling
     [ ] - with internals hidden away
@@ -117,6 +119,7 @@
   [ ] - release actual gem
 
 [ ] - General refactor
+  [ ] - Top-level Command class to be called by Status CLI class
   [ ] - Rubocop linting
   [ ] - Comment cleanup/uniformization
   [ ] - Use optimist gem versions or lock them

@@ -39,7 +39,7 @@ class StatusCLI < Thor
   # @parreirat NOTE - Some yield magic somewhere around here?
 	# Optional param webpages: all, subset (default: all)
 	desc "live [--pool_interval=5] [--no-output] ", "queries services continuously with pool_interval seconds interval and saves into store"
-  method_option :pool_interval, type: :numeric, default: 5
+  method_option :pool_interval, type: :numeric, default: 1
   method_option :output, type: :boolean, default: true
 	def live
     # @parreirat NOTE - Should rescue Timeout::Error and SocketError.
@@ -68,21 +68,42 @@ class StatusCLI < Thor
     end
 	end
 
+  desc "history [--format=standard_table]", "prints all the data currently saved"
   method_option :format, type: :string, default: "standard_table"
-	desc "history [--format=standard_table]","prints all the data currently saved"
 	def history
     data_store = Status::DataStore.new
     history = Status::History.new(data_store)
     history.print(options[:format])
 	end
 
-	desc "backup","saves current status data to a file"
+  desc "backup [--file=backup_data_store.csv]", "saves current status data to a file"
+  method_option :file, type: :string, default: "backup_data_store.csv"
 	def backup
+    data_store = Status::DataStore.new
+    data_store.save_data_store(options[:file])
 	end
 
-	desc "restore","adds data from a file into current status data"
+  method_option :file, type: :string, default: "backup_data_store.csv"
+  method_option :merge, type: :boolean, default: :true
+	desc "restore [--file=backup_data_store.csv] [--merge=true]", "adds data from a file into current status data"
 	def restore
+    if options[:merge]
+      data_store = Status::DataStore.new
+      data_store.load_data_store(options[:file])
+      puts "Merged data from '#{options[:file]}' into data store.".green
+    else
+      data_store = Status::DataStore.new(false)
+      data_store.load_data_store(options[:file])
+      puts "Replaced data store with data from '#{options[:file]}'.".green
+    end
 	end
+
+  # @parreirat NOTE - Not required but is useful.
+  desc "reset", "deletes the data store"
+  def reset
+    Status::DataStore.new.wipe_data_store
+    puts "Wiped data store!".green
+  end
 
 	desc "stats","summarizes the current data and prints it"
 	def stats
