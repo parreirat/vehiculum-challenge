@@ -26,13 +26,14 @@ RSpec.describe Status::DataStore do
   # Use 'rspec_data_store.csv' as our stub, which means within all our tests
   # the used data store file will be this one.
   before(:each) do
+    data_store.wipe_data_store
     allow_any_instance_of(Status::DataStore).to receive(:default_file)
                                             .and_return(RSPEC_DATA_STORE_FILE)
   end
 
   # Clean our data stores after every test.
   after(:each) do
-    data_store.wipe_data_store if data_store
+    data_store.wipe_data_store
   end
 
   let(:klass) { Status::DataStore }
@@ -141,6 +142,21 @@ RSpec.describe Status::DataStore do
       old_data = data_store.data
       data_store.save_data_store("rspec_backup.csv")
       new_data_store = klass.new(false)
+      new_data_store.load_data_store("rspec_backup.csv")
+      new_data = new_data_store.data
+      # Convert them to .csv-style arrays for easier comparison, which are
+      # sorted by, therefore properly comparable.
+      old_data = Status::DataStore.send(:data_to_rows, old_data)
+      new_data = Status::DataStore.send(:data_to_rows, new_data)
+      expect(old_data).to eq(new_data)
+    end
+
+    it "restore does not add duplicates (ex. merging same file's data twice)" do
+      add_random_data_point(data_store, provider)
+      old_data = data_store.data
+      data_store.save_data_store("rspec_backup.csv")
+      new_data_store = klass.new(false)
+      new_data_store.load_data_store("rspec_backup.csv")
       new_data_store.load_data_store("rspec_backup.csv")
       new_data = new_data_store.data
       # Convert them to .csv-style arrays for easier comparison, which are
