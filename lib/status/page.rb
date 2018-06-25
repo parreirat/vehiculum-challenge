@@ -3,18 +3,27 @@ require "net/http"
 module Status
 	class Page
 
-		# WEBPAGE_URL - should be overridden by inheriting classes.
+		# Raw HTML from request.
+		attr_accessor :html
+		# GOA-parsed object.
+		attr_accessor :parsed_html
+		# All classes descending from < Page, in other words, our implemented pages.
+		attr_accessor :implemented_pages
+		# Our Data::Store, to store data when we receive status information.
+		attr_accessor :data_store
 
-		attr_accessor :html        # Raw HTML from request.
-		attr_accessor :parsed_html # GOA-parsed object.
+		# Make inherited classes add to this classes' descendants.
+		def self.inherited(subclass)
+		  (@implemented_pages ||= []) << subclass
+		end
 
-		# def self.pages
-		#   descendants = []
-		#   ObjectSpace.each_object(Status::Page.singleton_class) do |k|
-		#       descendants.unshift k unless k == self
-		#   end
-		#   descendants
-		# end
+		def self.implemented_pages
+			@implemented_pages
+		end
+
+		def data_store
+			@data_store ||= Status::DataStore.new
+		end
 
 		def page_url
 			raise NotImplementedError,
@@ -32,7 +41,12 @@ module Status
 
 		private
 
-			def request_page!
+			def save_new_data(provider, status, time)
+				data_store.add_data_point(provider, status, time)
+				data_store.save_data_store
+			end
+
+			def request_page
 				uri          = URI.parse(page_url)
 				@html        = Net::HTTP.get(uri)
 				@parsed_html = Oga.parse_html(@html)

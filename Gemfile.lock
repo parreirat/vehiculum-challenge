@@ -3,6 +3,7 @@ PATH
   specs:
     status (0.1.0)
       oga
+      terminal-table
       thor
 
 GEM
@@ -93,6 +94,8 @@ GEM
     ruby_dep (1.5.0)
     safe_yaml (1.0.4)
     shellany (0.0.1)
+    terminal-table (1.8.0)
+      unicode-display_width (~> 1.1, >= 1.1.1)
     thor (0.20.0)
     unicode-display_width (1.4.0)
     vcr (4.0.0)

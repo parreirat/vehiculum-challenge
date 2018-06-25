@@ -32,10 +32,13 @@ Gem::Specification.new do |spec|
   spec.require_paths = ["lib"]
 
   # Thor for helping us build a simple CLI Tool.
-  spec.add_dependency 'thor'
+  spec.add_dependency "thor"
 
   # For pasing HTML and checking if webpages are up or other conditions.
-  spec.add_dependency 'oga'
+  spec.add_dependency "oga"
+
+  # For printing a pretty table to terminal!
+  spec.add_dependency "terminal-table"
 
   # Bundler, what else?
   spec.add_development_dependency "bundler"

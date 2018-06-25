@@ -16,24 +16,65 @@ class StatusCLI < Thor
   # Optional param output: false, true (default: true)
   # Optional param webpages: all, subset (default: all)
 	# @parreirat TODO - Before I forget: Use Threads to pool all services
-  desc "pull output=false webpages=all", "queries services once and saves into store"
-  def pull(output = true, webpages = :all)
+  desc "pull [--no-output]", "queries services once and saves into data store"
+  method_option :webpages, type: :array, default: Status::Page.implemented_pages
+  method_option :output  , type: :boolean, default: true
+  def pull
+    # @parreirat NOTE - Need top-level orchestrator class... not calling
+    #   these internals directly!
   	Thread.new {
-  		if Status::Pages::Bitbucket.new.is_up?
-	  		puts "Bitbucket is up!"
-	  	else
-	  		puts "Bitbucket is down!"
-	  	end
+      page = Status::Pages::Bitbucket.new
+      puts "Pooling #{page.provider}...".yellow if options[:output]
+      is_up = page.is_up?(true)
+      if options[:output]
+      status = ""
+        if is_up
+          status = "Up!".to_s.green
+        else
+          status = "Down!".to_s.red
+        end
+      puts "Pooling #{page.provider} complete: #{status}".yellow
+      end
 	  }.join
   end
 
+  # @parreirat NOTE - Some yield magic somewhere around here?
 	# Optional param webpages: all, subset (default: all)
-	desc "live pool_interval=5 webpages=all", "queries services continuously with pool_interval seconds interval and saves into store"
-	def live(webpages = :all)
+	desc "live [--pool_interval=5] [--no-output] ", "queries services continuously with pool_interval seconds interval and saves into store"
+  method_option :pool_interval, type: :numeric, default: 5
+  method_option :output, type: :boolean, default: true
+	def live
+    # @parreirat NOTE - Should rescue Timeout::Error and SocketError.
+    begin
+      puts "\n---===# Press ctrl+c to quit! #===---\n".yellow
+      loop do
+        Thread.new {
+          page = Status::Pages::Bitbucket.new
+          puts "Pooling #{page.provider}...".yellow if options[:output]
+          is_up = page.is_up?(true)
+          if options[:output]
+            status = ""
+            if is_up
+              status = "Up!".to_s.green
+            else
+              status = "Down!".to_s.red
+            end
+            puts "Pooling #{page.provider} complete: #{status}".yellow
+          end
+        }.join
+        puts "Waiting #{options[:pool_interval]} seconds before pooling again...".yellow  if options[:output]
+        sleep(options[:pool_interval])
+      end
+    rescue Interrupt
+      puts "\n---===# status live has terminated! #===---\n".green
+    end
 	end
 
 	desc "history","prints all the data currently saved in a table fashion"
 	def history
+    data_store = Status::DataStore.new
+    history = Status::History.new(data_store)
+    history.print
 	end
 
 	# Mandatory param, backup file path. (default: Dir.pwd/status_log.csv)

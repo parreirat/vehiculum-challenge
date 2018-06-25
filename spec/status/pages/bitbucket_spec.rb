@@ -5,11 +5,23 @@ RSpec.describe Status::Pages::Bitbucket do
 	let(:klass) { Status::Pages::Bitbucket }
 	let(:page)  { klass.new }
 
-	it "has a defined WEBPAGE_URL" do
-		expect(klass.const_defined?(:WEBPAGE_URL)).to be_truthy
+	it "has a defined PAGE_URL constant" do
+		expect(klass.const_defined?(:PAGE_URL)).to be_truthy
 	end
 
-	it "has overriden #is_up?" do
+	it "has a defined #page_url method" do
+		expect(klass.new.respond_to?(:page_url)).to be_truthy
+	end
+
+	it "has a defined PROVIDER constant" do
+		expect(klass.const_defined?(:PROVIDER)).to be_truthy
+	end
+
+	it "has a defined #provider method" do
+		expect(klass.new.respond_to?(:provider)).to be_truthy
+	end
+
+	it "has overriden #is_up? method" do
     VCR.use_cassette("up_bitbucket") do
 			# Have to think about this: false positives... (checking specific error)
 			expect{ page.is_up? }.to_not raise_error(NotImplementedError)
@@ -17,7 +29,7 @@ RSpec.describe Status::Pages::Bitbucket do
 	end
 
 	# Redundant? Calls #!is_up?
-	it "has overriden #is_down?" do
+	it "has overriden #is_down? method" do
     VCR.use_cassette("up_bitbucket") do
 			expect{ page.is_down? }.to_not raise_error
 		end
@@ -31,7 +43,7 @@ RSpec.describe Status::Pages::Bitbucket do
 	it "has non-nil @html and @parsed_html after request to webpage" do
     VCR.use_cassette("up_bitbucket") do
     	# For testing purposes, not supposed to be called directly.
-			page.send(:request_page!)
+			page.send(:request_page)
 			expect(page.html).to_not be_nil
 			expect(page.parsed_html).to_not be_nil
 		end
