@@ -17,7 +17,7 @@ RSpec.describe Status::DataStore do
     data_point_args = [
       provider,
       [:up, :down].sample,
-      Time.now.round - Random.rand(100)
+      Time.now.round - Random.rand(7200)
     ]
     data_store.add_data_point(*data_point_args)
     data_point_args

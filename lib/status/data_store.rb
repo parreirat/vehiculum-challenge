@@ -84,6 +84,11 @@ module Status
         time     = Time.parse(row[2])
         add_data_point(provider, status, time)
       end
+      # In case our user is somehow restoring the same file twice or hitting
+      # a small possibility of duplicates, squash them all out:
+      @data.each do |provider, data_points|
+        @data[provider] = data_points.uniq
+      end
       @data
     end
 
