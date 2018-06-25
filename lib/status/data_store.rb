@@ -33,14 +33,14 @@ module Status
     # }
     attr_accessor :data
 
-    def wipe_data_store(file = default_file)
-      File.delete(file) if File.exists?(file)
-      initialize_data_store
-    end
-
     def initialize(load_default_file = true)
       initialize_data_store
       merge_data_store(default_file) if load_default_file
+    end
+
+    def wipe_data_store
+      File.delete(default_file) if File.exists?(default_file)
+      initialize_data_store
     end
 
     def add_data_point(provider, status, time)
@@ -52,18 +52,7 @@ module Status
     end
 
     def save_data_store(file = default_file)
-      csv_data = []
-      @data.each do |provider, data_points|
-        data_points.each do |data_point|
-          csv_data << [
-            provider.capitalize,
-            data_point[:status].capitalize,
-            data_point[:time].to_s
-          ]
-        end
-      end
-      # Sort data by most recent on top, facilitates human readability.
-      csv_data.sort_by!{ |provider, status, time| time }.reverse!
+      csv_data = DataStore::data_to_rows(@data)
       CSV.open(file, "wb") do |csv|
         csv << csv_headers
         csv_data.each do |csv_row|
@@ -77,7 +66,7 @@ module Status
       @data = empty_data_store
     end
 
-    # Loads data from 'file' into current data store, and saves it into the
+    # Loads data from file into current data store, and saves it into the
     # default file, effectively "loading" the data, since "our data" is the
     # state of the default file loaded on initialization.
     def load_data_store(from_file)
@@ -108,6 +97,21 @@ module Status
       # other files is considered "backups" and "restores".
       def default_file
         "default_data_store.csv"
+      end
+
+      def self.data_to_rows(data)
+        row_data = []
+        data.each do |provider, data_points|
+          data_points.each do |data_point|
+            row_data << [
+              provider.capitalize,
+              data_point[:status].capitalize,
+              data_point[:time].to_s
+            ]
+          end
+        end
+        # Sort data by most recent on top, facilitates human readability.
+        row_data.sort_by!{ |provider, status, time| time }.reverse
       end
 
       # Returns hash of all providers with empty arrays as values:
