@@ -1,4 +1,4 @@
-Current priority: 3
+Current priority: 5
 
 ####Priorities:
 ~~1 - Implement all the Status::Page classes.~~ **15 minutes**
@@ -29,25 +29,32 @@ Current priority: 3
   - Now big comparisons are still failing comparisons in very very rare cases,
     and no miliseconds are involved now. Taking a break.
   - Fixed in 5 minutes: sorting by all the tuples makes the sorting as expected.
-  - 2 more minutes to finish tests for Status::DataStore.
+  - 2 more minutes to add one final tests for Status::DataStore. (tests in
+    need of refactoring, too much repetition throughout this one)
 
-
-4 - Implement tests for Status::History.
+~~4 - Implement tests for Status::History.~~
+  - Not much to do here: could create a fixture table generated from a fixed set
+    of seeds. Would create an identical data store, create the same data points,
+    and expect the print to be exactly the same as that of the fixture table
+    output.
+  - Stopping for now.
 
 ####Checklist:
-[ ] - Tests
-  [x] - Status::Page
+[x] - Tests **100 minutes total**
+  [x] - Status::Page **5 minutes**
     [x] - Status::Page::Bitbucket
     [x] - Status::Page::Cloudflare
     [x] - Status::Page::Github
     [x] - Status::Page::Rubygems
-  [x] - Status::DataStore
-  [ ] - Status::History
+  [x] - Status::DataStore **80 minutes**
+  [x] - Status::History **15 minutes**
 
-[x] - Implement Status::Page::Bitbucket
-[x] - Implement Status::Page::Cloudflare
-[x] - Implement Status::Page::Github
-[x] - Implement Status::Page::Rubygems
+[x] - Implementation **15 minutes total** (post-Bitbucket)
+  [x] - Status::Page
+    [x] - Status::Page::Bitbucket (included in 1h10 with basic CLI pull)
+    [x] - Status::Page::Cloudflare
+    [x] - Status::Page::Github
+    [x] - Status::Page::Rubygems
 
 [x] - pull
   [x] - with output argument
@@ -99,6 +106,7 @@ Current priority: 3
 
 [ ] - sparks
   [ ] - yields for formatting .csv data outputs
+  [ ] - rake task for basic implementation of new Status::Page
   [ ] - rake tasks/config file for new pages to be implemented
   [ ] - release actual gem
 
@@ -110,3 +118,6 @@ Current priority: 3
 ####Notes
 Not sure what this refers to exactly, in the task PDF:
   - Store error messages of status pages (ex. Minor Service Outage) display them later.
+Very little experience with Docker, not sure what this one refers to either:
+  - Use Docker to generate an image which can accept different arguments for
+different processes.
