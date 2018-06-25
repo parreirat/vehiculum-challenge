@@ -42,7 +42,8 @@
 ~~6 - Implement CLI command restore~~ **5 minutes**
   - Just needed to call implemented methods on both, done in 10 minutes.
 
-7 - Fix duplicates on 'restore' command merge.
+~~7 - Fix duplicates on 'restore' command merge.~~ **5 minutes**
+  - Just squash duplicates with uniq after each restore.
 
 8 - Implement CLI command stats
 
@@ -102,8 +103,8 @@
 [x] - restore **5 minutes**
   [ ] - IMPROVEMENTS
     [x] - with MERGE instead of replace **2 minutes** (just add option)
-      [ ] - do not add duplicates on merge
-    [ ] - with reset/smash/wipe argument
+      [x] - do not add duplicates on merge **5 minutes**
+    [x] - with reset/smash/wipe argument **2 minutes**
     [ ] - with error handling
     [ ] - with internals hidden away
     [ ] - prettify/uniformize description/argument usage
