@@ -45,7 +45,8 @@
 ~~7 - Fix duplicates on 'restore' command merge.~~ **5 minutes**
   - Just squash duplicates with uniq after each restore.
 
-8 - Implement CLI command stats
+8 - Implement webpages argument into pull/live
+9 - Implement CLI command stats
 
 ####Checklist:
 
@@ -120,6 +121,7 @@
   [ ] - rake task for basic implementation of new Status::Page
   [ ] - rake tasks/config file for new pages to be implemented
   [ ] - release actual gem
+  [ ] - history should list by webpage argument as well
 
 [ ] - General refactor
   [ ] - Top-level Command class to be called by Status CLI class
