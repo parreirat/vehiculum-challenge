@@ -8,14 +8,12 @@ require "awesome_print"
 
 require "pry"
 require "pry-byebug"
+require "pry-doc"
 
 require "status"
 
 class StatusCLI < Thor
 
-  # Optional param output: false, true (default: true)
-  # Optional param webpages: all, subset (default: all)
-	# @parreirat TODO - Before I forget: Use Threads to pool all services
   desc "pull [--no-output]", "queries services once and saves into data store"
   method_option :webpages, type: :array, default: Status::Page.implemented_pages
   method_option :output  , type: :boolean, default: true
@@ -70,24 +68,23 @@ class StatusCLI < Thor
     end
 	end
 
-	desc "history","prints all the data currently saved in a table fashion"
+  method_option :format, type: :string, default: "standard_table"
+	desc "history [--format=standard_table]","prints all the data currently saved"
 	def history
     data_store = Status::DataStore.new
     history = Status::History.new(data_store)
-    history.print
+    history.print(options[:format])
 	end
 
-	# Mandatory param, backup file path. (default: Dir.pwd/status_log.csv)
-	desc "backup file_path='./status_log.csv'","saves current status data to a file"
-	def backup(file_path = "status_log.csv")
+	desc "backup","saves current status data to a file"
+	def backup
 	end
 
-	# Mandatory param, backup file path. (default: Dir.pwd/status_log.csv)
-	desc "restore file_path='./status_log.csv'","adds data from a file into current status data"
-	def restore(file_path = "status_log.csv")
+	desc "restore","adds data from a file into current status data"
+	def restore
 	end
 
-	desc "stats","summarizes the current data and displays it in a table fashion"
+	desc "stats","summarizes the current data and prints it"
 	def stats
 	end
 

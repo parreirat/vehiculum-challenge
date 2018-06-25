@@ -41,6 +41,8 @@
 
 6 - Implement CLI command restore
 
+7 - Implement CLI command stats
+
 ####Checklist:
 
 [x] - Tests **100 minutes total**
@@ -82,6 +84,7 @@
 
 [x] - history
   [ ] - IMPROVEMENTS
+    [x] - with format argument **2 minutes**
     [ ] - with max_entries argument
     [ ] - with error handling
     [ ] - with internals hidden away
