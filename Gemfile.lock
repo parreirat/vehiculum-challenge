@@ -60,6 +60,9 @@ GEM
     pry-byebug (3.6.0)
       byebug (~> 10.0)
       pry (~> 0.10)
+    pry-doc (0.13.4)
+      pry (~> 0.11)
+      yard (~> 0.9.11)
     public_suffix (3.0.2)
     rainbow (3.0.0)
     rake (12.3.1)
@@ -103,6 +106,7 @@ GEM
       addressable (>= 2.3.6)
       crack (>= 0.3.2)
       hashdiff
+    yard (0.9.14)
 
 PLATFORMS
   ruby
@@ -114,6 +118,7 @@ DEPENDENCIES
   guard-rspec
   pry
   pry-byebug
+  pry-doc
   rake
   rspec
   rubocop

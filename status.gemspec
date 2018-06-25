@@ -49,6 +49,7 @@ Gem::Specification.new do |spec|
   # For proper and pretty debugging.
   spec.add_development_dependency "pry"
   spec.add_development_dependency "pry-byebug"
+  spec.add_development_dependency "pry-doc"
   spec.add_development_dependency "awesome_print"
 
   # Code linting is always nice.
@@ -58,6 +59,7 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency "rspec"
   spec.add_development_dependency "guard"
   spec.add_development_dependency "guard-rspec"
+
   # Use VCR for HTTP mock requests, and Webmock to be used alongside.
   spec.add_development_dependency "vcr"
   spec.add_development_dependency "webmock"
