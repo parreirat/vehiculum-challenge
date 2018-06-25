@@ -1,5 +1,3 @@
-Current priority: 5
-
 ####Priorities:
 ~~1 - Implement all the Status::Page classes.~~ **15 minutes**
 
@@ -39,7 +37,12 @@ Current priority: 5
     output.
   - Stopping for now.
 
+5 - Implement CLI command backup
+
+6 - Implement CLI command restore
+
 ####Checklist:
+
 [x] - Tests **100 minutes total**
   [x] - Status::Page **5 minutes**
     [x] - Status::Page::Bitbucket
@@ -91,8 +94,8 @@ Current priority: 5
     [ ] - prettify/uniformize description/argument usage
 
 [ ] - restore
-  [ ] - with MERGE instead of replace
   [ ] - IMPROVEMENTS
+    [ ] - with MERGE instead of replace
     [ ] - with reset/smash/wipe argument
     [ ] - with error handling
     [ ] - with internals hidden away
