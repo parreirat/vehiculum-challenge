@@ -135,8 +135,20 @@ RSpec.describe Status::DataStore do
       expect(old_data).to eq(new_data)
     end
 
-    # it "data stays the same when backed up and loaded with custom files" do
-    # end
+    it "data stays the same when backed up and loaded with custom files" do
+      repetitions = Random.rand(0..50)
+      repetitions.times { add_random_data_point(data_store, provider) }
+      old_data = data_store.data
+      data_store.save_data_store("rspec_backup.csv")
+      new_data_store = klass.new(false)
+      new_data_store.load_data_store("rspec_backup.csv")
+      new_data = new_data_store.data
+      # Convert them to .csv-style arrays for easier comparison, which are
+      # sorted by, therefore properly comparable.
+      old_data = Status::DataStore.send(:data_to_rows, old_data)
+      new_data = Status::DataStore.send(:data_to_rows, new_data)
+      expect(old_data).to eq(new_data)
+    end
 
   end
 

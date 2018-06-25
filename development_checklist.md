@@ -10,7 +10,7 @@ Current priority: 3
     doing too much meta-programming magic as time goes on because suddenly
     things might start specializing and then... a lot of unnecessary work.
 
-3 - Implement tests for Status::DataStore.
+~~3 - Implement tests for Status::DataStore.~~ **80 minutes**
   - Wasting way too much time on "what's the best standards of test making I can
     have?", for example on focusing on not having more than one expectation per
     example.
@@ -29,6 +29,7 @@ Current priority: 3
   - Now big comparisons are still failing comparisons in very very rare cases,
     and no miliseconds are involved now. Taking a break.
   - Fixed in 5 minutes: sorting by all the tuples makes the sorting as expected.
+  - 2 more minutes to finish tests for Status::DataStore.
 
 
 4 - Implement tests for Status::History.
@@ -40,7 +41,7 @@ Current priority: 3
     [x] - Status::Page::Cloudflare
     [x] - Status::Page::Github
     [x] - Status::Page::Rubygems
-  [ ] - Status::DataStore
+  [x] - Status::DataStore
   [ ] - Status::History
 
 [x] - Implement Status::Page::Bitbucket
