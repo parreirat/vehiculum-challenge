@@ -49,7 +49,9 @@
   - Starting refactoring and aborting... then deciding to refactor again... and
     aborting again. Not very pretty code on pull and futurely live.
 
-9 - Implement webpages argument into live
+~~9 - Implement webpages argument into live~~ **30 minutes**
+  - Supposed to be 2 minutes. Playing around with threads and mutexes for thread
+    safety despite nothing having blown yet (pooling with threads)
 10 - Implement CLI command stats
 
 ####Checklist:
@@ -62,6 +64,9 @@
     [x] - Status::Page::Rubygems
   [x] - Status::DataStore **80 minutes**
   [x] - Status::History **15 minutes**
+  [ ] - IMPROVEMENTS
+    [ ] - Should stub entire test suite for DataStore's default_file, some tests
+          are leaking into it.
 
 [x] - Implementation **15 minutes total** (post-Bitbucket)
   [x] - Status::Page
@@ -85,8 +90,12 @@
   [x] - with pool_interval argument
   [x] - with data storage saving
   [ ] - IMPROVEMENTS
-    [ ] - with webpages argument
-    [ ] - with thread usage
+    [x] - with webpages argument
+    [x] - with thread usage (hmm there have to be thread-safety issues here...
+          nothing blew up yet though)
+    [ ] - pool_interval should technically be interval between requests?
+    [ ] - each thread should continuously pool the webpage, not wait for others
+          before repooling
     [ ] - with error handling
     [ ] - with internals hidden away
     [ ] - prettify/uniformize description/argument usage
