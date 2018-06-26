@@ -92,9 +92,9 @@
   [x] - with pool_interval argument
   [x] - with data storage saving
   [ ] - IMPROVEMENTS
-    [x] - with webpages argument
+    [x] - with webpages argument **2 minutes**
     [x] - with thread usage (hmm there have to be thread-safety issues here...
-          nothing blew up yet though)
+          nothing blew up yet though) **28 minutes**
     [ ] - pool_interval should technically be interval between requests?
     [ ] - each thread should continuously pool the webpage, not wait for others
           before repooling
