@@ -50,8 +50,10 @@
     aborting again. Not very pretty code on pull and futurely live.
 
 ~~9 - Implement webpages argument into live~~ **30 minutes**
-  - Supposed to be 2 minutes. Playing around with threads and mutexes for thread
-    safety despite nothing having blown yet (pooling with threads)
+    - Supposed to be 2 minutes. Playing around with threads and mutexes for thread
+      safety despite nothing having blown yet (pooling with threads)
+    - Stopping for now.
+
 10 - Implement CLI command stats
 
 ####Checklist:
