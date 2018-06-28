@@ -46,7 +46,7 @@ module Status
 
 			def save_new_data(provider, status, time)
 				data_store.add_data_point(provider, status, time)
-				data_store.save_data_store
+				# data_store.save_data_store
 			end
 
 			def request_page

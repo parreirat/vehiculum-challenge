@@ -1,6 +1,8 @@
 require 'csv'
 require 'time'
 
+# require 'thread'
+
 module Status
 
   # Responsible for holding our data, saving, restoring and merging it.
@@ -32,10 +34,12 @@ module Status
     #   ]
     # }
     attr_accessor :data
+    # attr_accessor :semaphore
 
     def initialize(load_default_file = true)
       initialize_data_store
       merge_data_store(default_file) if load_default_file
+      # @@semaphore = Mutex.new
     end
 
     def wipe_data_store
@@ -44,11 +48,23 @@ module Status
     end
 
     def add_data_point(provider, status, time)
+      puts "provider: #{provider}".purple
+      puts "status: #{status}".purple
+      puts "time: #{time}".purple
       raise ArgumentError, INVALID_PROVIDER_MSG unless provider.is_a?(Symbol)
       raise ArgumentError, INVALID_STATUS_MSG unless status.is_a?(Symbol)
       raise ArgumentError, INVALID_TIME_MSG unless time.is_a?(Time)
       data_point = { status: status, time: time }
-      @data[provider] << data_point
+      # @@semaphore.synchronize do
+        @data[provider] << data_point # rescue puts "ID: #{thread_id} / data: #{@data}".purple
+        # Now it's doing some nice infinite loop x'D
+        $count ||= 0
+        $count += 1
+        puts $count
+        # CSV.open(default_file, "a+b") do |csv|
+        #   csv << [provider.to_s, status.to_s, time.to_s]
+        # end
+      # end
     end
 
     def save_data_store(file = default_file)
@@ -60,6 +76,11 @@ module Status
         end
       end
     end
+
+    # @parreirat TODO - THE PROBLEM IS THREADS ARE WRITING THE OLD DATA THEY READ INTO THE FILES! IF EACH THREAD JUST APPENDS ROW, THAT IS GOOD!
+    # def append_data_store(file = default_file)
+
+    # end
 
     # Merging is trivial, use it along with load.
     def initialize_data_store
@@ -75,13 +96,17 @@ module Status
       save_data_store(default_file)
     end
 
+    def thread_id
+      Thread.current.object_id
+    end
+
     def merge_data_store(from_file)
       return false unless File.exists?(from_file)
       CSV.foreach(from_file).with_index do |row, index|
         next if index == 0 # Skip headers, assume static positioning.
-        provider = row[0].downcase.to_sym
-        status   = row[1].downcase.to_sym
-        time     = Time.parse(row[2])
+        (provider = row[0].downcase.to_sym) # rescue puts "ID: #{thread_id} / row[0]: #{row[0]}".purple
+        (status   = row[1].downcase.to_sym) # rescue puts "ID: #{thread_id} / row[1]: #{row[1]}".purple
+        (time     = Time.parse(row[2])) # rescue puts "ID: #{thread_id} / row[2]: #{row[2]}".purple
         add_data_point(provider, status, time)
       end
       # In case our user is somehow restoring the same file twice or hitting

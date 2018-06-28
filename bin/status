@@ -16,6 +16,8 @@ class StatusCLI < Thor
 
   desc "pull [--no-output] [webpages=all]",
        "queries services once and saves into data store"
+  require 'pry'
+  binding.pry
   method_option :webpages, type: :array, default: Status::Page.implemented_pages.collect(&:provider)
   method_option :output  , type: :boolean, default: true
   def pull
@@ -54,12 +56,12 @@ class StatusCLI < Thor
     begin
       puts "\n---===# Press ctrl+c to quit! #===---\n".yellow
       loop do
-        threads = []
+        # threads = []
         # lock = Concurrent::ReadWriteLock.new
         options[:webpages].each do |provider|
           # It hurts to do this, no rails String#constantize.
           klass = Kernel.const_get("Status::Pages::#{provider.to_s.capitalize}")
-          threads << Thread.new do
+          # threads << Thread.new do
             page = klass.new
             puts "Pooling #{provider}...".yellow if options[:output]
             is_up = page.is_up?(true)
@@ -72,10 +74,10 @@ class StatusCLI < Thor
               end
               puts "Pooling #{provider} complete: #{status}".yellow
             end
-          end
+          # end
         end
         # Wait for all of our threads.
-        threads.each(&:join)
+        # threads.each(&:join)
         waiting_message = "All requests done and waiting #{options[:pool_interval]}"
         waiting_message += " seconds before pooling again..."
         puts waiting_message.yellow  if options[:output]
