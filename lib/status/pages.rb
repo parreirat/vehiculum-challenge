@@ -1,7 +1,7 @@
-# Require all our pages subclasses in the pages folder.
-Dir.glob("#{Dir.pwd}/lib/status/pages/*.rb").each do |file|
-	require file
-end
+require "status/pages/bitbucket"
+require "status/pages/cloudflare"
+require "status/pages/github"
+require "status/pages/rubygems"
 
 module Status
 	module Pages

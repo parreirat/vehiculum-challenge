@@ -54,8 +54,16 @@
       safety despite nothing having blown yet (pooling with threads)
     - Stopping for now.
 
-10 - Configure gemspec for gem install to set up all the systemwide
-     executables
+~~10 - Configure library to be set up as a gem~~ **2h30m**
+  - Have never done this and I really felt like tackling it - I feel like I did
+    everything right right off, but ran into a `require` issue and then every
+    time I was redoing the instructions, could never get `status` to be
+    available as an executable. After a lot of gem reinstalls, rbenv rehashes,
+    remaking of symbolic links and a final reboot I managed to get it working
+    again.
+  - I knew my absolute path requires in `lib/status/pages` would bite back
+    eventually. :)
+
 
 11 - Implement CLI command stats
 
@@ -151,7 +159,8 @@
   [ ] - yields for formatting history table outputs
   [ ] - rake task for basic implementation of new Status::Page
   [ ] - rake tasks/config file for new pages to be implemented
-  [ ] - release actual gem
+  [-] - release actual gem
+    - Not gonna polute the rubygems repository with this, dumb idea.
   [ ] - history should list by webpage argument as well
   [ ] - `share` uses some web API to put up a file with the "history" output
         or something similar, returns a link directly to the CLI
@@ -161,7 +170,7 @@
   [ ] - Rubocop linting
   [ ] - Comment cleanup/uniformization
   [ ] - Use optimist gem versions or lock them
-  [ ] - Configure gemspec for gem install to set up all the systemwide
+  [x] - Configure gemspec for gem install to set up all the systemwide
         executables
 
 ####Notes

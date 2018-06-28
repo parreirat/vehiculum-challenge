@@ -35,6 +35,10 @@ necessary).
 2 - Or just run the following command:
 `bundle exec rake install`
 
+**Now there's an important step**: depending on how you have your rubies set
+up, you might have to do something different: I use `rbenv`, so I have to call
+`rbenv rehash`, you won't get the global executable working otherwise.
+
 If you want to **reinstall** the gem due to changes or other reasons, run
 `gem uninstall status`, and repeat step 1, or rerun command from step 2.
 
