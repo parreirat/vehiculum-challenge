@@ -123,7 +123,8 @@ class StatusCLI < Thor
   # @parreirat NOTE - Not required but is useful.
   desc "reset", "deletes the data store"
   def reset
-    Status::DataStore.new.wipe_data_store
+    # Pass in false: we do not want to load default data store
+    Status::DataStore.new(false).wipe_data_store
     puts "Wiped data store!".green
   end
 
