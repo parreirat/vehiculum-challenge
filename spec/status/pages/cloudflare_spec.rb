@@ -22,7 +22,7 @@ RSpec.describe Status::Pages::Cloudflare do
 	it "has overriden #is_up? method" do
     VCR.use_cassette("up_cloudflare") do
 			# Have to think about this: false positives... (checking specific error)
-			expect{ page.is_up? }.to_not raise_error(NotImplementedError)
+			expect{ page.is_up? }.to_not raise_error
 		end
 	end
 
