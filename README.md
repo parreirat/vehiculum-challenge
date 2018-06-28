@@ -97,8 +97,11 @@ or without `pry-rescue`: up to personal preference.
 After installation in order to exemplify usage, follow this workflow.
 
 I suggest running three tabs in addition to the one you're invoking `status` on with the following commands each in order to quickly see the data stores at work:
+
 `watch -d -n 0.25 "cat default_data_store.csv"`
+
 `watch -d -n 0.25 "cat backup_data_store.csv"`
+
 `watch -d -n 0.25 "cat my_pretty_file.csv"`
 
 Don't know how your bash/terminal is set up, but I prepared the big block of calls below to be copy-pasted straight into the console for a complete run through all of the CLI tool's working features.
