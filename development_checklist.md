@@ -1,10 +1,4 @@
-Didn't manage to finish this today again. 2h30m went just into organizing
-some things, unthreading main branch and branching the threaded future-fixes,
-making the gem properly install and symlink executable, elaborate README.md
-(still missing usage instructions), and some other misc. things.
-Will do a final stretch tomorrow.
-
-####Priorities:
+###Priorities:
 ~~1 - Implement all the Status::Page classes.~~ **15 minutes**
 
 ~~2 - Implement tests for all the Status::Page classes.~~ **5 minutes**
@@ -73,114 +67,114 @@ Will do a final stretch tomorrow.
 
 11 - Implement CLI command stats
 
-####Checklist:
+##Checklist:
 
-[x] - Tests **100 minutes total**
-  [x] - Status::Page **5 minutes**
-    [x] - Status::Page::Bitbucket
-    [x] - Status::Page::Cloudflare
-    [x] - Status::Page::Github
-    [x] - Status::Page::Rubygems
-    [ ] - IMPROVEMENTS
-      [ ] - Duplicated VCR.use_casettes, use blocks to define
-  [x] - Status::DataStore **80 minutes**
-    [ ] - IMPROVEMENTS
-      [ ] - Should stub entire test suite for DataStore's default_file, some tests are leaking into it.
-  [x] - Status::History **15 minutes**
-  [ ] - IMPROVEMENTS
-    [ ] - Should use ".class_method", "#instance_method" notations.
+- [x] - Tests **100 minutes total**
+  - [x] - Status::Page **5 minutes**
+    - [x] - Status::Page::Bitbucket
+    - [x] - Status::Page::Cloudflare
+    - [x] - Status::Page::Github
+    - [x] - Status::Page::Rubygems
+    - [ ] - IMPROVEMENTS
+      - [ ] - Duplicated VCR.use_casettes, use blocks to define
+  - [x] - Status::DataStore **80 minutes**
+    - [ ] - IMPROVEMENTS
+      - [ ] - Should stub entire test suite for DataStore's default_file, some tests are leaking into it.
+  - [x] - Status::History **15 minutes**
+  - [ ] - IMPROVEMENTS
+    - [ ] - Should use ".class_method", "#instance_method" notations.
 
-[x] - Implementation **15 minutes total** (post-Bitbucket)
-  [x] - Status::Pages
-  [x] - Status::Page
-    [x] - Status::Page::Bitbucket (included in 1h10 with basic CLI pull)
-    [x] - Status::Page::Cloudflare
-    [x] - Status::Page::Github
-    [x] - Status::Page::Rubygems
-  [x] - Status::DataStore
-    [ ] - IMPROVEMENTS
-      [ ] - If running a 'live' writing to CSV should only append
-  [x] - Status::History
+- [x] - Implementation **15 minutes total** (post-Bitbucket)
+  - [x] - Status::Pages
+  - [x] - Status::Page
+    - [x] - Status::Page::Bitbucket (included in 1h10 with basic CLI pull)
+    - [x] - Status::Page::Cloudflare
+    - [x] - Status::Page::Github
+    - [x] - Status::Page::Rubygems
+  - [x] - Status::DataStore
+    - [ ] - IMPROVEMENTS
+      - [ ] - If running a 'live' writing to CSV should only append
+  - [x] - Status::History
 
-[x] - pull
-  [x] - with output argument
-  [x] - with data storage saving
-  [ ] - IMPROVEMENTS
-    [x] - with webpages argument **20 minutes** (starting refactoring and aborting...)
-    [x] - with thread usage
-    [ ] - with error handling
-    [ ] - with internals hidden away
-    [ ] - prettify/uniformize description/argument usage
+- [x] - pull
+  - [x] - with output argument
+  - [x] - with data storage saving
+  - [ ] - IMPROVEMENTS
+    - [x] - with webpages argument **20 minutes** (starting refactoring and aborting...)
+    - [x] - with thread usage
+    - [ ] - with error handling
+    - [ ] - with internals hidden away
+    - [ ] - prettify/uniformize description/argument usage
 
-[x] - live
-  [x] - with output argument
-  [x] - with pool_interval argument
-  [x] - with data storage saving
-  [ ] - IMPROVEMENTS
-    [x] - with webpages argument **2 minutes**
-    [x] - with thread usage (hmm there have to be thread-safety issues here...
+- [x] - live
+  - [x] - with output argument
+  - [x] - with pool_interval argument
+  - [x] - with data storage saving
+  - [ ] - IMPROVEMENTS
+    - [x] - with webpages argument **2 minutes**
+    - [x] - with thread usage (hmm there have to be thread-safety issues here...
           nothing blew up yet though) - **28 minutes**
-      [ ] - may blow up: use 'concurrent' with locks on thread-unsafe code
+      - [ ] - may blow up: use 'concurrent' with locks on thread-unsafe code
             (writes to files? access to instance variables?)
-    [ ] - pool_interval should technically be interval between requests?
-    [ ] - each thread should continuously pool the webpage, not wait for others
+    - [ ] - pool_interval should technically be interval between requests?
+    - [ ] - each thread should continuously pool the webpage, not wait for others
           before repooling
-    [ ] - with error handling
-    [ ] - with internals hidden away
-    [ ] - prettify/uniformize description/argument usage
+    - [ ] - with error handling
+    - [ ] - with internals hidden away
+    - [ ] - prettify/uniformize description/argument usage
 
-[x] - history **5 minutes**
-  [ ] - IMPROVEMENTS
-    [x] - with format argument **2 minutes**
-    [ ] - with max_entries argument
-    [ ] - with error handling
-    [ ] - with webpages argument (print out history for certain pages)
-    [ ] - with internals hidden away
-    [ ] - prettify/uniformize description/argument usage
+- [x] - history **5 minutes**
+  - [ ] - IMPROVEMENTS
+    - [x] - with format argument **2 minutes**
+    - [ ] - with max_entries argument
+    - [ ] - with error handling
+    - [ ] - with webpages argument (print out history for certain pages)
+    - [ ] - with internals hidden away
+    - [ ] - prettify/uniformize description/argument usage
 
-[x] - backup **5 minutes**
-  [ ] - IMPROVEMENTS
-    [ ] - with error handling
-    [ ] - with internals hidden away
-    [ ] - prettify/uniformize description/argument usage
+- [x] - backup **5 minutes**
+  - [ ] - IMPROVEMENTS
+    - [ ] - with error handling
+    - [ ] - with internals hidden away
+    - [ ] - prettify/uniformize description/argument usage
 
-[x] - restore **5 minutes**
-  [ ] - IMPROVEMENTS
-    [x] - with MERGE instead of replace **2 minutes** (just add option)
-      [x] - do not add duplicates on merge **5 minutes**
-    [x] - with reset/smash/wipe argument **2 minutes**
-    [ ] - with error handling
-    [ ] - with internals hidden away
-    [ ] - prettify/uniformize description/argument usage
+- [x] - restore **5 minutes**
+  - [ ] - IMPROVEMENTS
+    - [x] - with MERGE instead of replace **2 minutes** (just add option)
+      - [x] - do not add duplicates on merge **5 minutes**
+    - [x] - with reset/smash/wipe argument **2 minutes**
+    - [ ] - with error handling
+    - [ ] - with internals hidden away
+    - [ ] - prettify/uniformize description/argument usage
 
-[ ] - stats
-  [ ] - IMPROVEMENTS
-    [ ] - with error handling
-    [ ] - with internals hidden away
-    [ ] - prettify/uniformize description/argument usage
+- [ ] - stats
+  - [ ] - IMPROVEMENTS
+    - [ ] - with error handling
+    - [ ] - with internals hidden away
+    - [ ] - prettify/uniformize description/argument usage
 
-[ ] - sparks
-  [ ] - yields for formatting .csv data outputs
-  [ ] - yields for formatting history table outputs
-  [ ] - rake task for basic implementation of new Status::Page
-  [ ] - rake tasks/config file for new pages to be implemented
+- [ ] - sparks
+  - [ ] - yields for formatting .csv data outputs
+  - [ ] - yields for formatting history table outputs
+  - [ ] - rake task for basic implementation of new Status::Page
+  - [ ] - rake tasks/config file for new pages to be implemented
   [-] - release actual gem
     - Not gonna polute the rubygems repository with this, dumb idea.
-  [ ] - history should list by webpage argument as well
-  [ ] - `share` uses some web API to put up a file with the "history" output
+  - [ ] - history should list by webpage argument as well
+  - [ ] - `share` uses some web API to put up a file with the "history" output
         or something similar, returns a link directly to the CLI
 
-[ ] - General refactor
-  [ ] - Top-level Command class to be called by Status CLI class
-  [ ] - Rubocop linting
-  [ ] - Comment cleanup/uniformization
-  [ ] - Use optimist gem versions or lock them
-  [x] - Configure gemspec for gem install to set up all the systemwide
+- [ ] - General refactor
+  - [ ] - Top-level Command class to be called by Status CLI class
+  - [ ] - Rubocop linting
+  - [ ] - Comment cleanup/uniformization
+  - [ ] - Use optimist gem versions or lock them
+  - [x] - Configure gemspec for gem install to set up all the systemwide
         executables
-  [ ] - Didn't get around to asking about time zone handling: defaulting to +0100, written to data store.
-  [ ] - Implement bin/setup: do bundle, bundle exec rake install rake task invoke, and rbenv rehash if rbenv is defined. Check if status is available directly on project root after.
+  - [ ] - Didn't get around to asking about time zone handling: defaulting to +0100, written to data store.
+  - [ ] - Implement bin/setup: do bundle, bundle exec rake install rake task invoke, and rbenv rehash if rbenv is defined. Check if status is available directly on project root after.
 
-####Notes
+##Notes
 
 Not sure what this refers to exactly, in the task PDF:
   - Store error messages of status pages (ex. Minor Service Outage) display them later.
