@@ -174,6 +174,7 @@
         executables
   - [ ] - Didn't get around to asking about time zone handling: defaulting to +0100, written to data store.
   - [ ] - Implement bin/setup: do bundle, bundle exec rake install rake task invoke, and rbenv rehash if rbenv is defined. Check if status is available directly on project root after.
+  - [ ] - Data storage is local to where bin is executed, make it location independent (relative path to gem installation folder, or a set home folder location or similar)
 
 ## Notes
 
