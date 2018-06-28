@@ -2,6 +2,13 @@ module Status
 	module Pages
 		class Cloudflare < Page
 
+      # @parreirat NOTE - Found a bug where we report cloudflare as down.
+      # Upon loading as of this time, for about 1/5th of a second, the text
+      # shows as "Minor Service Outage" with a yellow-colored background and
+      # a few other page differences.
+      # It then reverts to what we expect... what to do? Is this considered
+      # up or down? How would we check the "final result", it's clearly some
+      # post-load JS.
       UP_STRING = "All Systems Operational".freeze
       PAGE_URL  = "https://www.cloudflarestatus.com/".freeze
       PROVIDER  = :cloudflare.freeze

@@ -6,7 +6,7 @@ RSpec.describe Status::History do
   # table against fixture?
 
   it "raises exception when initializing with an object which is not a Status::DataStore" do
-    expect{ Status::History.new("string") }.to raise_error
+    expect{ Status::History.new("string") }.to raise_error(ArgumentError)
   end
 
   it "initialize without error with a valid Status::DataStore" do

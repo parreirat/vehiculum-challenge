@@ -27,6 +27,3 @@ VCR.configure do |config|
   config.hook_into :webmock
   # config.configure_rspec_metadata!
 end
-
-# @parreirat NOTE - Our custom configurations.
-# RSpec::Expectations.configuration.on_potential_false_positives = :nothing
