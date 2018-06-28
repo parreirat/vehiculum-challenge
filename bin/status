@@ -4,6 +4,9 @@
 require "bundler/setup"
 
 require "thor"
+# Our generator for a new page's template
+require "status/generators/page"
+
 require "awesome_print"
 
 require "pry"
@@ -133,9 +136,14 @@ class StatusCLI < Thor
     puts "Wiped data store!".green
   end
 
-	# desc "stats", "summarizes the current data and prints it"
-	# def stats
-	# end
+  desc "new_webpage name url", "adds template for a new webpage"
+  def new_webpage(name, url)
+    Status::Generators::Page.start([name, url])
+  end
+
+  # desc "stats", "summarizes the current data and prints it"
+  # def stats
+  # end
 
 end
 

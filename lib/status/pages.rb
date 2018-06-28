@@ -1,7 +1,6 @@
-require "status/pages/bitbucket"
-require "status/pages/cloudflare"
-require "status/pages/github"
-require "status/pages/rubygems"
+Dir.glob("#{File.dirname(__FILE__)}/pages/*") do |file|
+  require file
+end
 
 module Status
 	module Pages

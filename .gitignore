@@ -10,7 +10,8 @@
 # rspec failure tracking
 .rspec_status
 
-# Default/Rspec data store file
+# Default/Rspec data store files
 default_data_store.csv
+backup_data_store.csv
 rspec_backup.csv
 

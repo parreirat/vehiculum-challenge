@@ -14,6 +14,10 @@ Print out the history in a pretty table of the data store with `status history`.
 
 You can also call `stats reset` to delete the data store.
 
+Lastly, `stats new_webpage` will interactively have you add and edit a new
+Status::Pages implementation until it works :)
+
+
 ## Installation
 
 We do not have a published gem, hence installation will be exclusively through
@@ -209,6 +213,9 @@ interactions have been shown.**
   Not specifying a file will use `backup_data_store.csv` by default.
 
 `status reset` - Wipes data store.
+
+`stats new_webpage name url` - Interactively adds and edits a new Status::Pages
+implementation until it works, if the user wishes to do so.
 
 `status stats` - Not implemented as of now.
 
