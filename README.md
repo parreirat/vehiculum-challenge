@@ -1,3 +1,5 @@
+Be sure to check out my [development checklist](https://github.com/parreirat/vehiculum-challenge/blob/master/development_checklist.md)!
+
 # Status
 
 Simple Plain Ruby that pools a given set of webpages for their up or down
@@ -101,8 +103,11 @@ or without `pry-rescue`: up to personal preference.
 After installation in order to exemplify usage, follow this workflow.
 
 I suggest running three tabs in addition to the one you're invoking `status` on with the following commands each in order to quickly see the data stores at work:
+
 `watch -d -n 0.25 "cat default_data_store.csv"`
+
 `watch -d -n 0.25 "cat backup_data_store.csv"`
+
 `watch -d -n 0.25 "cat my_pretty_file.csv"`
 
 Don't know how your bash/terminal is set up, but I prepared the big block of calls below to be copy-pasted straight into the console for a complete run through all of the CLI tool's working features.
@@ -112,74 +117,76 @@ I inserted a lot of sleeping calls where I deemed logic in case you want to stop
 Modify the SLEEPING TIME variable below to any number you'd like.
 `SLEEPING_TIME=0` will disable any sleeps.
 
-`SLEEPING_TIME=10`
-`status history`
-`sleep $SLEEPING_TIME`
-`status pull`
-`sleep $SLEEPING_TIME`
-`status pull --no-output`
-`sleep $SLEEPING_TIME`
-`status pull --no-output --webpages bitbucket github`
-`sleep $SLEEPING_TIME`
-`status pull --webpages cloudflare github`
-`sleep $SLEEPING_TIME`
-`status history`
-`sleep $SLEEPING_TIME`
-`status backup`
-`sleep $SLEEPING_TIME`
-`status history`
-`sleep $SLEEPING_TIME`
-`status reset`
-`sleep $SLEEPING_TIME`
-`status history`
-`sleep $SLEEPING_TIME`
-`status restore`
-`sleep $SLEEPING_TIME`
-`status history`
-`sleep $SLEEPING_TIME`
-`status reset`
-`sleep $SLEEPING_TIME`
-`status pull --webpages rubygems github`
-`sleep $SLEEPING_TIME`
-`status pull --webpages cloudflare github bitbucket`
-`sleep $SLEEPING_TIME`
-`status pull --webpages cloudflare rubygems`
-`sleep $SLEEPING_TIME`
-`status history`
-`sleep $SLEEPING_TIME`
-`status backup --file=my_pretty_file.csv`
-`sleep $SLEEPING_TIME`
-`status reset`
-`sleep $SLEEPING_TIME`
-`status history`
-`sleep $SLEEPING_TIME`
-`status restore --file=my_pretty_file.csv`
-`sleep $SLEEPING_TIME`
-`status history`
-`sleep $SLEEPING_TIME`
-`status reset`
-`status pull --webpages rubygems`
-`status pull --webpages rubygems`
-`status pull --webpages rubygems`
-`status pull --webpages rubygems`
-`status backup --file=my_pretty_file.csv`
-`sleep $SLEEPING_TIME`
-`status reset`
-`sleep $SLEEPING_TIME`
-`status history`
-`sleep $SLEEPING_TIME`
-`status pull --webpages cloudflare`
-`status pull --webpages cloudflare`
-`status pull --webpages cloudflare`
-`status pull --webpages cloudflare`
-`status history`
-`sleep $SLEEPING_TIME`
-# With the restore below you can see restore merging data
-`status restore --file=my_pretty_file.csv`
-`sleep $SLEEPING_TIME`
-`status history`
-`sleep $SLEEPING_TIME`
-`status live --pool_interval=2`
+``` 
+SLEEPING_TIME=10
+status history
+sleep $SLEEPING_TIME
+status pull
+sleep $SLEEPING_TIME
+status pull --no-output
+sleep $SLEEPING_TIME
+status pull --no-output --webpages bitbucket github
+sleep $SLEEPING_TIME
+status pull --webpages cloudflare github
+sleep $SLEEPING_TIME
+status history
+sleep $SLEEPING_TIME
+status backup
+sleep $SLEEPING_TIME
+status history
+sleep $SLEEPING_TIME
+status reset
+sleep $SLEEPING_TIME
+status history
+sleep $SLEEPING_TIME
+status restore
+sleep $SLEEPING_TIME
+status history
+sleep $SLEEPING_TIME
+status reset
+sleep $SLEEPING_TIME
+status pull --webpages rubygems github
+sleep $SLEEPING_TIME
+status pull --webpages cloudflare github bitbucket
+sleep $SLEEPING_TIME
+status pull --webpages cloudflare rubygems
+sleep $SLEEPING_TIME
+status history
+sleep $SLEEPING_TIME
+status backup --file=my_pretty_file.csv
+sleep $SLEEPING_TIME
+status reset
+sleep $SLEEPING_TIME
+status history
+sleep $SLEEPING_TIME
+status restore --file=my_pretty_file.csv
+sleep $SLEEPING_TIME
+status history
+sleep $SLEEPING_TIME
+status reset
+status pull --webpages rubygems
+status pull --webpages rubygems
+status pull --webpages rubygems
+status pull --webpages rubygems
+status backup --file=my_pretty_file.csv
+sleep $SLEEPING_TIME
+status reset
+sleep $SLEEPING_TIME
+status history
+sleep $SLEEPING_TIME
+status pull --webpages cloudflare
+status pull --webpages cloudflare
+status pull --webpages cloudflare
+status pull --webpages cloudflare
+status history
+sleep $SLEEPING_TIME
+######### With the restore below you can see restore merging data
+status restore --file=my_pretty_file.csv
+sleep $SLEEPING_TIME
+status history
+sleep $SLEEPING_TIME
+status live --pool_interval=2 --webpages github cloudflare bitbucket
+```
 
 **Now ctrl-C to interrupt status live whenever and all the CLI tool
 interactions have been shown.**
@@ -193,10 +200,12 @@ interactions have been shown.**
   `status pull --webpages github bitbucket`
 
 `status live` -
-  For no output:
+  For no output
   `status live --no-output`
+  
   For a subset of webpages:
   `status live --webpages github bitbucket`
+  
   To specify seconds interval after pooling a set of webpages (default 5 seconds):
   `status live --pool_interval=2`
 
