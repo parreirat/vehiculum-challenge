@@ -1,3 +1,5 @@
+Be sure to check out my [development checklist](https://github.com/parreirat/vehiculum-challenge/blob/master/development_checklist.md)!
+
 # Status
 
 Simple Plain Ruby that pools a given set of webpages for their up or down
