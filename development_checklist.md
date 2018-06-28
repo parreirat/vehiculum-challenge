@@ -1,3 +1,9 @@
+Didn't manage to finish this today again. 2h30m went just into organizing
+some things, unthreading main branch and branching the threaded future-fixes,
+making the gem properly install and symlink executable, elaboraet README.md
+(still missing usage instructions), and some other misc. things.
+Will do a final stretch tomorrow.
+
 ####Priorities:
 ~~1 - Implement all the Status::Page classes.~~ **15 minutes**
 
