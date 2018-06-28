@@ -1,8 +1,13 @@
-guard :rspec, cmd: "bundle exec rspec" do
+if ENV["ENABLE_GUARD_RESCUE"] == "true"
+  command = "bundle exec rescue rspec"
+else
+  command = "bundle exec rspec"
+end
+
+guard :rspec, cmd: command do
+
   require "guard/rspec/dsl"
   dsl = Guard::RSpec::Dsl.new(self)
-
-  # Feel free to open issues for suggestions and improvements
 
   # RSpec files
   rspec = dsl.rspec
@@ -13,4 +18,5 @@ guard :rspec, cmd: "bundle exec rspec" do
   # Ruby files
   ruby = dsl.ruby
   dsl.watch_spec_files_for(ruby.lib_files)
+
 end

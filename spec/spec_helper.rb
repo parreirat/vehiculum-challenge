@@ -4,6 +4,9 @@ require "status"
 require "awesome_print"
 require "pry"
 require "pry-byebug"
+require "pry-doc"
+require "pry-rescue"
+require "pry-stack_explorer"
 require "vcr"
 
 RSpec.configure do |config|
@@ -26,4 +29,4 @@ VCR.configure do |config|
 end
 
 # @parreirat NOTE - Our custom configurations.
-RSpec::Expectations.configuration.on_potential_false_positives = :nothing
+# RSpec::Expectations.configuration.on_potential_false_positives = :nothing

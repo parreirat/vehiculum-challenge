@@ -54,7 +54,10 @@
       safety despite nothing having blown yet (pooling with threads)
     - Stopping for now.
 
-10 - Implement CLI command stats
+10 - Configure gemspec for gem install to set up all the systemwide
+     executables
+
+11 - Implement CLI command stats
 
 ####Checklist:
 
@@ -64,18 +67,27 @@
     [x] - Status::Page::Cloudflare
     [x] - Status::Page::Github
     [x] - Status::Page::Rubygems
+    [ ] - IMPROVEMENTS
+      [ ] - Duplicated VCR.use_casettes, use blocks to define
   [x] - Status::DataStore **80 minutes**
+    [ ] - IMPROVEMENTS
+      [ ] - Should stub entire test suite for DataStore's default_file, some tests
+            are leaking into it.
   [x] - Status::History **15 minutes**
   [ ] - IMPROVEMENTS
-    [ ] - Should stub entire test suite for DataStore's default_file, some tests
-          are leaking into it.
+    [ ] - Should use ".class_method", "#instance_method" notations.
 
 [x] - Implementation **15 minutes total** (post-Bitbucket)
+  [x] - Status::Pages
   [x] - Status::Page
     [x] - Status::Page::Bitbucket (included in 1h10 with basic CLI pull)
     [x] - Status::Page::Cloudflare
     [x] - Status::Page::Github
     [x] - Status::Page::Rubygems
+  [x] - Status::DataStore
+    [ ] - IMPROVEMENTS
+      [ ] - If running a 'live' writing to CSV should only append
+  [x] - Status::History
 
 [x] - pull
   [x] - with output argument
@@ -94,7 +106,9 @@
   [ ] - IMPROVEMENTS
     [x] - with webpages argument **2 minutes**
     [x] - with thread usage (hmm there have to be thread-safety issues here...
-          nothing blew up yet though) **28 minutes**
+          nothing blew up yet though) - **28 minutes**
+      [ ] - may blow up: use 'concurrent' with locks on thread-unsafe code
+            (writes to files? access to instance variables?)
     [ ] - pool_interval should technically be interval between requests?
     [ ] - each thread should continuously pool the webpage, not wait for others
           before repooling
@@ -107,6 +121,7 @@
     [x] - with format argument **2 minutes**
     [ ] - with max_entries argument
     [ ] - with error handling
+    [ ] - with webpages argument (print out history for certain pages)
     [ ] - with internals hidden away
     [ ] - prettify/uniformize description/argument usage
 
@@ -138,16 +153,26 @@
   [ ] - rake tasks/config file for new pages to be implemented
   [ ] - release actual gem
   [ ] - history should list by webpage argument as well
+  [ ] - `share` uses some web API to put up a file with the "history" output
+        or something similar, returns a link directly to the CLI
 
 [ ] - General refactor
   [ ] - Top-level Command class to be called by Status CLI class
   [ ] - Rubocop linting
   [ ] - Comment cleanup/uniformization
   [ ] - Use optimist gem versions or lock them
+  [ ] - Configure gemspec for gem install to set up all the systemwide
+        executables
 
 ####Notes
+
 Not sure what this refers to exactly, in the task PDF:
   - Store error messages of status pages (ex. Minor Service Outage) display them later.
 Very little experience with Docker, not sure what this one refers to either:
   - Use Docker to generate an image which can accept different arguments for
 different processes.
+
+Did not use branching for development at all - bad!
+
+I think I should have kept the DataStore data point format as is in CSV, just
+arrays of arrays, would facilitate some things a lot.

@@ -3,11 +3,13 @@
 # Runs our .gemspec, among others, allowing 'lib' to be appended onto $LOAD_PATH
 require "bundler/setup"
 
-require "thor"
 require "awesome_print"
 
 require "pry"
 require "pry-byebug"
+require "pry-doc"
+require "pry-rescue"
+require "pry-stack_explorer"
 
 require "status"
 

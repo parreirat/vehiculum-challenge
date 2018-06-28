@@ -14,6 +14,9 @@ module Status
 
 		# Make inherited classes add to this classes' descendants.
 		def self.inherited(subclass)
+			# @parreirat TODO - This never runs for the status executable when
+			# outside the project root... no idea why. Fix this.
+			# binding.pry
 		  (@implemented_pages ||= []) << subclass
 		end
 
