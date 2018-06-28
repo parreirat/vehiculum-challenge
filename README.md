@@ -176,7 +176,7 @@ status restore --file=my_pretty_file.csv
 sleep $SLEEPING_TIME
 status history
 sleep $SLEEPING_TIME
-status live --pool_interval=2
+status live --pool_interval=2 --webpages github cloudflare bitbucket
 ```
 
 **Now ctrl-C to interrupt status live whenever and all the CLI tool
