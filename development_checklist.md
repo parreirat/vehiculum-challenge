@@ -1,73 +1,74 @@
-###Priorities:
+## Priorities
+
 ~~1 - Implement all the Status::Page classes.~~ **15 minutes**
 
 ~~2 - Implement tests for all the Status::Page classes.~~ **5 minutes**
-  - Simply copy/pasting tests around: can be generalized into a
+  * Simply copy/pasting tests around: can be generalized into a
     meta-programming test class (like a lot of the code we'll have in this
     task) that will do everything by itself, but I've grown somewhat weary of
     doing too much meta-programming magic as time goes on because suddenly
     things might start specializing and then... a lot of unnecessary work.
 
 ~~3 - Implement tests for Status::DataStore.~~ **80 minutes**
-  - Wasting way too much time on "what's the best standards of test making I can
+  * Wasting way too much time on "what's the best standards of test making I can
     have?", for example on focusing on not having more than one expectation per
     example.
-  - Also struggled with how to test for file input/output, have never
+  * Also struggled with how to test for file input/output, have never
     dealt with it.
-  - Struggled with stubbing the files for this and cleaning them.
-  - Stuck for last 30 minutes figuring out why the time stamps on my backed
+  * Struggled with stubbing the files for this and cleaning them.
+  * Stuck for last 30 minutes figuring out why the time stamps on my backed
     up/loaded data always changes by fractions of a second.
     expected: {...[{..., :time=>2018-06-25 17:57:29.000000000 +0100}]...}
          got: {...[{..., :time=>2018-06-25 17:57:29.438726313 +0100}]...}
-  - Solved after about 1 hour: the first thing I looked and kept looking at
+  * Solved after about 1 hour: the first thing I looked and kept looking at
     all the time, our 'Time.now' for introducing random data points, was
     introducing the lesser-than-second units which were not visible in Time
     object without accessing it directly into comparison. Use Time#round to
     eliminate lesser-than-second fractions.
-  - Now big comparisons are still failing comparisons in very very rare cases,
+  * Now big comparisons are still failing comparisons in very very rare cases,
     and no miliseconds are involved now. Taking a break.
-  - Fixed in 5 minutes: sorting by all the tuples makes the sorting as expected.
-  - 2 more minutes to add one final tests for Status::DataStore. (tests in
+  * Fixed in 5 minutes: sorting by all the tuples makes the sorting as expected.
+  * 2 more minutes to add one final tests for Status::DataStore. (tests in
     need of refactoring, too much repetition throughout this one)
 
 ~~4 - Implement tests for Status::History.~~ **15 minutes**
-  - Not much to do here: could create a fixture table generated from a fixed set
+  * Not much to do here: could create a fixture table generated from a fixed set
     of seeds. Would create an identical data store, create the same data points,
     and expect the print to be exactly the same as that of the fixture table
     output. Drifted a bit thinking about doing actual output testing and gave
     up.
-  - Stopping for now.
+  * Stopping for now.
 
 ~~5 - Implement CLI command backup~~ **5 minutes**
 ~~6 - Implement CLI command restore~~ **5 minutes**
-  - Just needed to call implemented methods on both, done in 10 minutes.
+  * Just needed to call implemented methods on both, done in 10 minutes.
 
 ~~7 - Fix duplicates on 'restore' command merge.~~ **5 minutes**
-  - Just squash duplicates with uniq after each restore.
+  * Just squash duplicates with uniq after each restore.
 
 ~~8 - Implement webpages argument into pull~~ **20 minutes**
-  - Starting refactoring and aborting... then deciding to refactor again... and
+  * Starting refactoring and aborting... then deciding to refactor again... and
     aborting again. Not very pretty code on pull and futurely live.
 
 ~~9 - Implement webpages argument into live~~ **30 minutes**
-    - Supposed to be 2 minutes. Playing around with threads and mutexes for thread
+    * Supposed to be 2 minutes. Playing around with threads and mutexes for thread
       safety despite nothing having blown yet (pooling with threads)
-    - Stopping for now.
+    * Stopping for now.
 
 ~~10 - Configure library to be set up as a gem~~ **2h30m**
-  - Have never done this and I really felt like tackling it - I feel like I did
+  * Have never done this and I really felt like tackling it - I feel like I did
     everything right right off, but ran into a `require` issue and then every
     time I was redoing the instructions, could never get `status` to be
     available as an executable. After a lot of gem reinstalls, rbenv rehashes,
     remaking of symbolic links and a final reboot I managed to get it working
     again.
-  - I knew my absolute path requires in `lib/status/pages` would bite back
+  * I knew my absolute path requires in `lib/status/pages` would bite back
     eventually. :)
 
 
 11 - Implement CLI command stats
 
-##Checklist:
+## Checklist
 
 - [x] - Tests **100 minutes total**
   - [x] - Status::Page **5 minutes**
@@ -174,15 +175,16 @@
   - [ ] - Didn't get around to asking about time zone handling: defaulting to +0100, written to data store.
   - [ ] - Implement bin/setup: do bundle, bundle exec rake install rake task invoke, and rbenv rehash if rbenv is defined. Check if status is available directly on project root after.
 
-##Notes
+## Notes
 
 Not sure what this refers to exactly, in the task PDF:
-  - Store error messages of status pages (ex. Minor Service Outage) display them later.
-Very little experience with Docker, not sure what this one refers to either:
-  - Use Docker to generate an image which can accept different arguments for
-different processes.
+"Store error messages of status pages (ex. Minor Service Outage) display them later."
 
-Did not use branching for development at all - bad!
+Very little experience with Docker, not sure what this one refers to either:
+"Use Docker to generate an image which can accept different arguments for
+different processes."
+
+Just used branching for not-complete thread_safety branch.
 
 I think I should have kept the DataStore data point format as is in CSV, just
 arrays of arrays, would facilitate some things a lot.
