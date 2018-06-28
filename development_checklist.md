@@ -1,6 +1,6 @@
 Didn't manage to finish this today again. 2h30m went just into organizing
 some things, unthreading main branch and branching the threaded future-fixes,
-making the gem properly install and symlink executable, elaboraet README.md
+making the gem properly install and symlink executable, elaborate README.md
 (still missing usage instructions), and some other misc. things.
 Will do a final stretch tomorrow.
 
@@ -85,8 +85,7 @@ Will do a final stretch tomorrow.
       [ ] - Duplicated VCR.use_casettes, use blocks to define
   [x] - Status::DataStore **80 minutes**
     [ ] - IMPROVEMENTS
-      [ ] - Should stub entire test suite for DataStore's default_file, some tests
-            are leaking into it.
+      [ ] - Should stub entire test suite for DataStore's default_file, some tests are leaking into it.
   [x] - Status::History **15 minutes**
   [ ] - IMPROVEMENTS
     [ ] - Should use ".class_method", "#instance_method" notations.
@@ -178,6 +177,8 @@ Will do a final stretch tomorrow.
   [ ] - Use optimist gem versions or lock them
   [x] - Configure gemspec for gem install to set up all the systemwide
         executables
+  [ ] - Didn't get around to asking about time zone handling: defaulting to +0100, written to data store.
+  [ ] - Implement bin/setup: do bundle, bundle exec rake install rake task invoke, and rbenv rehash if rbenv is defined. Check if status is available directly on project root after.
 
 ####Notes
 
